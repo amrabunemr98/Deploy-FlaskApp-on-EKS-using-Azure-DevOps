@@ -11,7 +11,7 @@ RUN pip install flask flask_mysqldb
 COPY . /app
 
 EXPOSE 5000
-# Set the command to be executed when the container starts
+# Set the command to be executed when the container starts.
 CMD ["python3", "app.py"]
 
 
