@@ -7,7 +7,7 @@ WORKDIR /app
 # Install the Python dependencies listed in requirements.txt using pip
 RUN pip install flask flask_mysqldb
 
-# Copy the rest of the FlaskApp files from the host to the /app directory in the container
+# Copy the rest of the FlaskApp files from the host to the /app directory in the container.
 COPY . /app
 
 EXPOSE 5000
