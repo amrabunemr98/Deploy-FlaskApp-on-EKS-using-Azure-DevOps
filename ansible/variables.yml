@@ -1,0 +1,4 @@
+aws_access_key: "AKIA5SFBL246T7ZMPCFD"
+aws_secret_key: "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"
+kubectl_version: "v1.27.4"
+aws_region: "us-east-1"

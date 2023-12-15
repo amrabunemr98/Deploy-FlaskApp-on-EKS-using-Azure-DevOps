@@ -1,0 +1,160 @@
+---
+- hosts: Task
+  become: true
+  remote_user: ubuntu
+  become_user: root
+  tasks:
+    - name: load vars
+      include_vars:
+        file: variables.yml
+
+    - name: Install required packages
+      apt:
+        name: ["unzip", "ca-certificates", "curl", "apt-transport-https"]
+        state: present
+
+    - name: Check if AWS CLI is installed
+      stat:
+        path: /usr/local/aws-cli/v2/current
+      register: aws_cli_installed
+
+    - name: Install AWS CLI
+      shell: >
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
+        unzip awscliv2.zip &&
+        ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+      when: not aws_cli_installed.stat.exists
+
+    - name: Create .aws directory
+      file:
+        path: "/home/ubuntu/.aws"
+        state: directory
+
+    - name: Create credentials file with AWS access keys
+      copy:
+        content: |
+          [default]
+          aws_access_key_id = "{{ aws_access_key }}"
+          aws_secret_access_key = "{{ aws_secret_key }}"
+        dest: "/home/ubuntu/.aws/credentials"
+
+    - name: Install kubectl
+      command: "{{ item }}"
+      with_items:
+        - "curl -O https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+        - "chmod +x ./kubectl"
+        - "mv ./kubectl /usr/local/bin/"
+
+    - name: Configure kubectl for the user
+      lineinfile:
+        path: "$HOME/.bashrc"
+        line: "export PATH=$HOME/bin:$PATH"
+    - name: Set ownership for ~/.aws directory
+      file:
+        path: /home/ubuntu/.aws
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Set permissions for ~/.aws directory
+      file:
+        path: /home/ubuntu/.aws
+        state: directory
+        mode: '0700'
+        
+    - name: Fetch EKS Cluster status
+      command: "aws eks --region {{ aws_region }} describe-cluster --name Sprints-EKS-Cluster --query cluster.status"
+      register: eks_cluster_status
+
+    - name: Print EKS Cluster status
+      debug:
+        var: eks_cluster_status.stdout
+
+    - name: Update kubeconfig
+      command: "aws eks --region {{ aws_region }} update-kubeconfig --name Sprints-EKS-Cluster"
+
+    - name: Get nodes
+      command: "kubectl get nodes"
+      register: nodes_server
+      changed_when: false
+
+    - name: Display nodes
+      debug:
+        var: nodes_server.stdout
+
+    # - name: Import jenkins key from url
+    #   become: true
+    #   apt_key:
+    #     state: present
+    #     url: https://pkg.jenkins.io/debian/jenkins.io-2023.key 
+
+    # - name: Download Long Term Jenkins release
+    #   become: true
+    #   apt_repository:
+    #     repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+    #     state: present
+
+    # - name: Install java
+    #   become: true
+    #   apt:
+    #     name: openjdk-11-jdk
+    #     state: present
+
+    # - name: Install jenkins
+    #   become: true
+    #   apt:
+    #     name: jenkins
+    #     state: latest
+
+    # - name: Update Jenkins
+    #   apt:
+    #     name: jenkins
+    #     update_cache: true
+    #   become: true
+
+    # - name: Start jenkins
+    #   become: true
+    #   service:
+    #     name: jenkins
+    #     state: started
+
+    - name: Update APT package manager cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    # - name: Add jenkins user to the docker group
+    #   user:
+    #     name: jenkins
+    #     groups: docker
+    #     append: yes
+
+    # - name: Restart Jenkins service
+    #   service:
+    #     name: jenkins
+    #     state: restarted
+
+    - name: Change ownership of /var/run/docker.sock
+      file:
+        path: /var/run/docker.sock
+        owner: root
+        group: docker
+        state: touch
+
+    - name: Grant read-write permissions to docker group for /var/run/docker.sock
+      file:
+        path: /var/run/docker.sock
+        mode: 'g+rw'
+
+    # - name: Retrieve Jenkins admin password
+    #   command: "cat /var/lib/jenkins/secrets/initialAdminPassword"
+    #   register: admin_password
+    #   changed_when: false
+
+    # - name: Display Jenkins admin password
+    #   debug:
+    #     var: admin_password.stdout

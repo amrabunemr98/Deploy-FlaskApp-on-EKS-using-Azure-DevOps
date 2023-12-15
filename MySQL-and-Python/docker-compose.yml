@@ -1,0 +1,48 @@
+version: "3.9"
+
+# Define the services (containers) that will be used in the application
+services:
+  
+  # Service for the main application (FlaskApp)
+  app:
+    # Specify the build context for the app service (path to Dockerfile and app code)
+    build: 
+      context: ./FlaskApp
+      dockerfile: Dockerfile
+    
+    # Map port 5000 of the host to port 5000 of the container
+    ports:
+      - "5000:5000"
+    
+    # Create a link to the 'db' service (allows app to communicate with the database)
+    links:
+      - "db"
+    
+    # Set environment variables for the app service
+    environment:
+      # MySQL database name for the FlaskApp
+      MYSQL_DB: BucketList
+      # MySQL database password for the FlaskApp
+      MYSQL_PASSWORD: YW1y
+      # MySQL database username for the FlaskApp
+      MYSQL_USER: root
+      # MySQL database host (linked to the 'db' service)
+      MYSQL_HOST: mysql-service
+
+  # Service for the database (MYSQL_Queries)
+  db:
+    # Specify the build context for the db service (path to Dockerfile and database code)
+    build: 
+      context: ./MySQL_Queries
+      dockerfile: Dockerfile
+    # Map port 3305 of the host to port 3306 of the container (MySQL default port)
+    ports:
+      - "3305:3306"
+    
+    # Set environment variable for the MySQL root password
+    environment:
+      MYSQL_ROOT_PASSWORD: YW1y
+
+
+      
+    

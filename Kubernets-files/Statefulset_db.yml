@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-statefulset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: mysql-service
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: 817775426354.dkr.ecr.us-east-1.amazonaws.com/task-ecr-repo:build-${BUILD_NUMBER}-db
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: data-volume
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:   
+                secretKeyRef:
+                  name: app-secrets
+                  key: MYSQL_ROOT_PASSWORD
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: mypvc
