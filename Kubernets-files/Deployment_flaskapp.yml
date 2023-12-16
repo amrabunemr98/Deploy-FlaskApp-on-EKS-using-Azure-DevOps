@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: $(imageName)
+          image: #{imageName}#
           ports:
             - containerPort: 5000
           readinessProbe:
