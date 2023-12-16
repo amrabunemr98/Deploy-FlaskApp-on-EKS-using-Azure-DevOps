@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: 817775426354.dkr.ecr.us-east-1.amazonaws.com/task-ecr-repo:build-${BUILD_NUMBER}-app
+          image: $(imageName)
           ports:
             - containerPort: 5000
           readinessProbe:
