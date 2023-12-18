@@ -25,7 +25,6 @@ stages:
         repository: '$(imageName)'
         command: 'build'
         Dockerfile: '$(System.DefaultWorkingDirectory)/_amrabunemr98_Task/MySQL-and-Python/FlaskApp/Dockerfile'
-        tags: '$(Build.BuildId)'
     - task: ECRPushImage@1
       inputs:
         awsCredentials: 'Task..'
