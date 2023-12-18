@@ -24,7 +24,7 @@ stages:
       inputs:
         repository: '$(imageName)'
         command: 'build'
-        Dockerfile: '$(System.DefaultWorkingDirectory)/_amrabunemr98_Task/MySQL-and-Python/FlaskApp/Dockerfile'
+        Dockerfile: '**/Dockerfile'
     - task: ECRPushImage@1
       inputs:
         awsCredentials: 'Task..'
