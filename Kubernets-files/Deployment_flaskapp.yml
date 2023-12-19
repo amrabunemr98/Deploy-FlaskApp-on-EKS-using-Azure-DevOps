@@ -36,24 +36,24 @@ spec:
             requests:
               cpu: "0.1"   # Specify the CPU request (e.g., 0.1 CPU core)
               memory: "128Mi"   # Specify the memory request (e.g., 128 MiB)
-          # env:
-          #   - name: MYSQL_DATABASE_USER
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: flask-app-config
-          #         key: MYSQL_DATABASE_USER
-          #   - name: MYSQL_DATABASE_DB
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: flask-app-config
-          #         key: MYSQL_DATABASE_DB
-          #   - name: MYSQL_DATABASE_HOST
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: flask-app-config
-          #         key: MYSQL_DATABASE_HOST
-          #   - name: MYSQL_DATABASE_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: app-secrets
-          #         key: MYSQL_DATABASE_PASSWORD
+          env:
+            - name: MYSQL_DATABASE_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: flask-app-config
+                  key: MYSQL_DATABASE_USER
+            - name: MYSQL_DATABASE_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: flask-app-config
+                  key: MYSQL_DATABASE_DB
+            - name: MYSQL_DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: flask-app-config
+                  key: MYSQL_DATABASE_HOST
+            - name: MYSQL_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: MYSQL_DATABASE_PASSWORD
