@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: 817775426354.dkr.ecr.us-east-1.amazonaws.com/task-ecr-repo:build-${BUILD_NUMBER}-db
+          image: 146396578791.dkr.ecr.us-east-1.amazonaws.com/task-ecr-repo:db
           ports:
             - containerPort: 3306
           volumeMounts:
