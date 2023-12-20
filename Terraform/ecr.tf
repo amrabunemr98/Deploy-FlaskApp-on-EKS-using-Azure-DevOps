@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "ecr_policy" {
 }
 
 resource "aws_ecr_repository_policy" "aws_ecr_policy" {
-  repository = aws_ecr_repository.sprints_ecr.name
+  repository = aws_ecr_repository.task_ecr.name
   policy = data.aws_iam_policy_document.ecr_policy.json
 }
 
