@@ -6,10 +6,10 @@
 - The primary objective of this project is to establish a robust end-to-end Continuous Integration and Continuous Deployment (CI/CD) pipeline for a web application hosted on a Kubernetes cluster. Leveraging the power of Azure DevOps, this project showcases the seamless automation of software development, testing, and deployment processes.
 
 ## :hammer_and_wrench: Requirements:-
-:heavy_check_mark: Github
-:heavy_check_mark: Terraform
-:heavy_check_mark: AWS
-:heavy_check_mark: Docker 
-:heavy_check_mark: Ansible
-:heavy_check_mark: Kubernetes
-:heavy_check_mark: Azure DevOps
+- :white_check_mark: Github
+- :white_check_mark: Terraform
+- :white_check_mark: AWS
+- :white_check_mark: Docker 
+- :white_check_mark: Ansible
+- :white_check_mark: Kubernetes
+- :white_check_mark: Azure DevOps
