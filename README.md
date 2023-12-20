@@ -5,7 +5,7 @@
 ## :star2: Introduction:-
 - The primary objective of this project is to establish a robust end-to-end Continuous Integration and Continuous Deployment (CI/CD) pipeline for a web application hosted on a Kubernetes cluster. Leveraging the power of Azure DevOps, this project showcases the seamless automation of software development, testing, and deployment processes.
 
-## :hammer_and_wrench: Requirements:-
+## :gear: Requirements:-
 - :white_check_mark: Github
 - :white_check_mark: Terraform
 - :white_check_mark: AWS
@@ -13,3 +13,13 @@
 - :white_check_mark: Ansible
 - :white_check_mark: Kubernetes
 - :white_check_mark: Azure DevOps
+
+## :scroll: Project Structure:-
+- Github: GitHub Actions workflow directory containing the CI/CD configuration.
+- Terraform: Configurations for provisioning infrastructure on AWS such as VPC, subnets, EC2, EKS, ECR, CloudWatch, SNS and more.
+- Ansible: Automating the configuration of EC2 by installing AWS CLI, kubectl and Docker.
+- Docker: Building Dockerfiles for Flask-App and MySQL DB.
+- Kubernetes: Creating Kubernetes manifests for deploying the Flask app and MySQL DB on the EKS cluster.
+- Azure DevOps: Configuring a Release Pipeline to automate the build, push and deployment process.
+
+## :diamond_shape_with_a_dot_inside: Steps to run project:-
