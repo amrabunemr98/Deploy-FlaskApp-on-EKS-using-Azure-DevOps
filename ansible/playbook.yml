@@ -63,7 +63,7 @@
         mode: '0700'
         
     - name: Fetch EKS Cluster status
-      command: "aws eks --region {{ aws_region }} describe-cluster --name Sprints-EKS-Cluster --query cluster.status"
+      command: "aws eks --region {{ aws_region }} describe-cluster --name task-EKS-Cluster --query cluster.status"
       register: eks_cluster_status
 
     - name: Print EKS Cluster status
@@ -71,7 +71,7 @@
         var: eks_cluster_status.stdout
 
     - name: Update kubeconfig
-      command: "aws eks --region {{ aws_region }} update-kubeconfig --name Sprints-EKS-Cluster"
+      command: "aws eks --region {{ aws_region }} update-kubeconfig --name task-EKS-Cluster"
 
     - name: Get nodes
       command: "kubectl get nodes"
@@ -82,42 +82,6 @@
       debug:
         var: nodes_server.stdout
 
-    # - name: Import jenkins key from url
-    #   become: true
-    #   apt_key:
-    #     state: present
-    #     url: https://pkg.jenkins.io/debian/jenkins.io-2023.key 
-
-    # - name: Download Long Term Jenkins release
-    #   become: true
-    #   apt_repository:
-    #     repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
-    #     state: present
-
-    # - name: Install java
-    #   become: true
-    #   apt:
-    #     name: openjdk-11-jdk
-    #     state: present
-
-    # - name: Install jenkins
-    #   become: true
-    #   apt:
-    #     name: jenkins
-    #     state: latest
-
-    # - name: Update Jenkins
-    #   apt:
-    #     name: jenkins
-    #     update_cache: true
-    #   become: true
-
-    # - name: Start jenkins
-    #   become: true
-    #   service:
-    #     name: jenkins
-    #     state: started
-
     - name: Update APT package manager cache
       apt:
         update_cache: yes
@@ -126,17 +90,6 @@
       apt:
         name: docker.io
         state: present
-
-    # - name: Add jenkins user to the docker group
-    #   user:
-    #     name: jenkins
-    #     groups: docker
-    #     append: yes
-
-    # - name: Restart Jenkins service
-    #   service:
-    #     name: jenkins
-    #     state: restarted
 
     - name: Change ownership of /var/run/docker.sock
       file:
@@ -150,11 +103,3 @@
         path: /var/run/docker.sock
         mode: 'g+rw'
 
-    # - name: Retrieve Jenkins admin password
-    #   command: "cat /var/lib/jenkins/secrets/initialAdminPassword"
-    #   register: admin_password
-    #   changed_when: false
-
-    # - name: Display Jenkins admin password
-    #   debug:
-    #     var: admin_password.stdout
