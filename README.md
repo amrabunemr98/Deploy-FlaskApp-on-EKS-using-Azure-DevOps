@@ -1,10 +1,10 @@
 <div align="center">
   <h1 style="color: red;">Deploy FlaskApp on EKS using Azure DevOps :globe_with_meridians::hammer_and_wrench:</h1>
 </div>
-![Presentation 3](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/45fe5638-20fb-463c-ab0a-cb401e702146)
 
 ## :star2: Introduction:-
 - The primary objective of this project is to establish a robust end-to-end Continuous Integration and Continuous Deployment (CI/CD) pipeline for a web application hosted on a Kubernetes cluster. Leveraging the power of Azure DevOps, this project showcases the seamless automation of software development, testing, and deployment processes.
+![Presentation 3](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/45fe5638-20fb-463c-ab0a-cb401e702146)
 
 ## :gear: Requirements:-
 - :white_check_mark: Github
