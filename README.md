@@ -23,3 +23,13 @@
 - Azure DevOps: Configuring a Release Pipeline to automate the build, push and deployment process.
 
 ## :diamond_shape_with_a_dot_inside: Steps to run project:-
+1. Clone the Repository:
+```
+git clone git@github.com:amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps.git
+```
+2. Open local terminal to add AWS credentials:
+```
+cd .aws
+nano credentials
+```
+![WhatsApp Image 2023-12-20 at 3 54 48 PM](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/1926b45c-c077-422e-bd83-103b6c6111bd)
