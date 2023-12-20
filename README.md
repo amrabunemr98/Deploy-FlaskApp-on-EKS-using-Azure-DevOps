@@ -9,7 +9,7 @@
 :heavy_check_mark: Github
 :heavy_check_mark: Terraform
 :heavy_check_mark: AWS
-- :heavy_check_mark: Docker 
-- :heavy_check_mark: Ansible
-- :heavy_check_mark: Kubernetes
-- :heavy_check_mark: Azure DevOps
+:heavy_check_mark: Docker 
+:heavy_check_mark: Ansible
+:heavy_check_mark: Kubernetes
+:heavy_check_mark: Azure DevOps
