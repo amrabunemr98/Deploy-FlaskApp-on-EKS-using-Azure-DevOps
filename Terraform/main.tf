@@ -105,7 +105,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm" {
   period              = "300"  # 5 minutes
   statistic           = "Average"
   threshold           = "80"
-  alarm_description   = "Alarm if CPU exceeds 90% for 2 consecutive periods"
+  alarm_description   = "Alarm if CPU exceeds 80% for 2 consecutive periods"
   actions_enabled     = true
 
   dimensions = {
