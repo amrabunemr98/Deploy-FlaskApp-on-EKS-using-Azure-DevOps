@@ -6,3 +6,7 @@
 ## Playbook Structure
 1.  Load Variables
 - The playbook starts by loading variables from an external file [variables.yml](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/blob/main/ansible/variables.yml) to ensure a clean separation of configuration.
+2. Install Required Packages
+- Installs necessary packages (unzip, ca-certificates, curl, apt-transport-https) on the target hosts.
+3. Install AWS CLI
+  - Checks if the AWS CLI is installed; if not, installs it. The AWS CLI installation includes downloading the AWS CLI v2, extracting it, and configuring its installation path.
