@@ -30,6 +30,8 @@ git clone git@github.com:amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps.
 2. Open local terminal to add AWS credentials:
 ```
 cd .aws
+```
+```
 nano credentials
 ```
 ![WhatsApp Image 2023-12-20 at 3 54 48 PM](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/1926b45c-c077-422e-bd83-103b6c6111bd)
@@ -119,6 +121,8 @@ kubectl get secret
 ```
 kubectl get configmap
 ```
+![Screenshot from 2023-12-20 10-31-37](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/37f40315-1659-4f08-a130-0e9b4b134259)
+
 10. Access Flask Application:
 - After the release pipeline completes, find the DNS of LoadBalancer and search of DNS in your browser
 ![Screenshot from 2023-12-20 10-35-04](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/86f09575-21a6-4ff4-a955-caf3330deba7)
