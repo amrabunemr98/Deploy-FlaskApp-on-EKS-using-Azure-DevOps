@@ -33,9 +33,9 @@ Run_Ansible() {
 
 
 echo "It will start to run all scripts "
-#Run_Terraform
+Run_Terraform
 echo "Terraform Fininshed SuccessFully"
-#Update_Inventory
+Update_Inventory
 echo "Inventory Updated SuccessFully"
 sleep 5
 Run_Ansible
