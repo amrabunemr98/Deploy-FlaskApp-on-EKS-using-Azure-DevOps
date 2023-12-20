@@ -134,10 +134,11 @@ kubectl get configmap
 ![Screenshot from 2023-12-20 10-06-59](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/408fbbcc-23ad-4f26-824a-0424a2268b7a)
 
 11. Logs are collected from Amazon EC2 instances and Log streams are created to organize and categorize logs for easy analysis, and Metrics are gathered from AWS EC2 instances such as CPU utilization are monitored to track the health and performance of resources through CloudWatch Logs & Metrics:
+![Screenshot from 2023-12-20 10-32-38](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/1a2efae2-0bc6-4eb2-9ce1-b0ce2919094c)
 ![Screenshot from 2023-12-20 10-23-11](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/491d50e2-4497-453c-a945-d9cadc512497)
 ![Screenshot from 2023-12-20 10-23-23](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/07b721a4-a265-4692-9e92-423c77ae17d6)
 
-12. An email subscription is added to the SNS topic to receive alerts:
+13. An email subscription is added to the SNS topic to receive alerts:
 ![Screenshot from 2023-12-20 10-23-52](https://github.com/amrabunemr98/Deploy-FlaskApp-on-EKS-using-Azure-DevOps/assets/128842547/f91f056c-aec5-49ec-a82e-74b9b514d1a4)
 
 > [!IMPORTANT]
